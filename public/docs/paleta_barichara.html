@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paleta de Colores - Marca Ecológica Barichara</title>
+    <style>
+        :root {
+            --coral-vibrante: #F25C78;
+            --rosado-palido: #FAD4D8;
+            --rojo-semilla: #8B3A3A;
+            --verde-limon: #8CBA51;
+            --verde-hoja: #3A5F2D;
+            --verde-profundo: #1E3315;
+            --crema-guayaba: #F1F2D8;
+            --blanco-hueso: #FAFAFA;
+            --tierra-tapia: #C17754;
+            --carbon-vegetal: #2C3525;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--blanco-hueso);
+            color: var(--carbon-vegetal);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--crema-guayaba);
+            padding-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--verde-profundo);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--tierra-tapia);
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--verde-profundo);
+            margin-top: 50px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--tierra-tapia);
+            padding-left: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        /* Grid de la paleta principal */
+        .grid-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .color-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(44, 53, 37, 0.06);
+            overflow: hidden;
+            border: 1px solid rgba(44, 53, 37, 0.04);
+            transition: transform 0.2s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .color-sample {
+            height: 140px;
+            width: 100%;
+            position: relative;
+        }
+
+        .color-info {
+            padding: 20px;
+        }
+
+        .color-name {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--carbon-vegetal);
+            margin-bottom: 4px;
+        }
+
+        .color-hex {
+            font-family: monospace;
+            color: #555555;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            background: #f2f2f2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .color-meta {
+            font-size: 0.85rem;
+            color: #555555;
+            margin-top: 10px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 10px;
+        }
+
+        .color-meta strong {
+            display: block;
+            color: var(--verde-profundo);
+            margin-bottom: 2px;
+            font-size: 0.9rem;
+        }
+
+        /* Gradientes */
+        .grid-gradients {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .gradient-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(44, 53, 37, 0.06);
+            border: 1px solid rgba(44, 53, 37, 0.04);
+        }
+
+        .gradient-sample {
+            height: 120px;
+        }
+
+        .gradient-info {
+            padding: 20px;
+        }
+
+        .gradient-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--verde-profundo);
+            margin-bottom: 6px;
+        }
+
+        .gradient-use {
+            font-size: 0.9rem;
+            color: #555555;
+        }
+
+        /* Combinaciones */
+        .combinations-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .combination-row {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(44, 53, 37, 0.04);
+            border-left: 5px solid var(--verde-hoja);
+        }
+
+        .combination-title {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--verde-profundo);
+            margin-bottom: 8px;
+        }
+
+        .combination-desc {
+            font-size: 0.95rem;
+            color: #555555;
+            margin-bottom: 15px;
+        }
+
+        .combination-preview {
+            padding: 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Paleta de Colores - Marca Ecológica Barichara</h1>
+        <p class="subtitle">Identidad visual web inspirada en los tonos orgánicos de la guayaba y la tierra mística de Santander.</p>
+    </header>
+
+    <main>
+        <!-- Sección 1: Paleta de Colores -->
+        <h2 class="section-title">Paleta Principal de Componentes</h2>
+        <div class="grid-palette">
+            
+            <!-- Color 1 -->
+            <div class="color-card">
+                <div class="color-sample" style="background-color: var(--coral-vibrante);"></div>
+                <div class="color-info">
+                    <p class="color-name">Coral Vibrante</p>
+                    <span class="color-hex">#F25C78</span>
+                    <div class="color-meta">
+                        <strong>Uso en UI:</strong> Botones de llamado a la acción (CTA), elementos destacados, badges.
+                    </div>
+                    <div class="color-meta">
+                        <strong>Origen:</strong> El centro de la pulpa de la guayaba madura.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color 2 -->
+            <div class="color-card">
+                <div class="color-sample" style="background-color: var(--rosado-palido);"></div>
+                <div class="color-info">
+                    <p class="color-name">Rosado Pálido</p>
+                    <span class="color-hex">#FAD4D8</span>
+                    <div class="color-meta">
+                        <strong>Uso en UI:</strong> Fondos de secciones secundarias, tarjetas o estados hover suaves.
+                    </div>
+                    <div class="color-meta">
+                        <strong>Origen:</strong> Capa externa de la pulpa antes de llegar a la corteza.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color 3 -->
+            <div class="color-card">
+                <div class="color-sample" style="background-color: var(--rojo-semilla);"></div>
+                <div class="color-info">
+                    <p class="color-name">Rojo Semilla</p>
+                    <span class="color-hex">#8B3A3A</span>
+                    <div class="color-meta">
+                        <strong>Uso en UI:</strong> Estados hover de botones principales, bordes de acento, enlaces activos.
+                    </div>
+                    <div class="color-meta">
+                        <strong>Origen:</strong> Las semillas interiores densas de la fruta.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color 4 -->
+            <div class="color-card">
+                <div class="color-sample" style="background-color: var(--verde-limon);"></div>
+                <div class="color-info">
+                    <p class="color-name">Verde Limón</p>
+                    <span class="color-hex">#8CBA51</span>
+                    <div class="color-meta">
+                        <strong>Uso en UI:</strong> Iconos de beneficios, etiquetas ecológicas, alertas de éxito.
+                    </div>
+                    <div class="color-meta">
+                        <strong>Origen:</strong> Capa exterior y brillante de la cáscara de guayaba.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color 5 -->
+            <div class="color-card">
+                <div class="color-sample" style="background-color: var(--verde-hoja);"></div>
+                <div class="color-info">
+                    <p class="color-name">Verde Hoja</p>
+                    <span class="color-hex">#3A5F2D</span>
+                    <div class="color-meta">
+                        <strong>Uso en UI:</strong> Botones secundarios, navegación activa, headers intermedios.
+                    </div>
+                    <div class="color-meta">
+                        <strong>Origen:</strong> Tono central de las hojas del árbol de guayabo.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color 6 -->
+            <div class="color-card">
+                <div class="color-sample" style="background-color: var(--verde-profundo);"></div>
+                <div class="color-info">
+                    <p class="color-name">Verde Profundo</p>
+                    <span class="color-hex">#1E3315</span>
+                    <div class="color-meta">
+                        <strong>Uso en UI:</strong> Fondos oscuros estructurados (footers), tipografía en bloques claros.
+                    </div>
+                    <div class="color-meta">
+                        <strong>Origen:</strong> Sombras de la planta y textura vegetal curada.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color 7 -->
+            <div class="color-card">
+                <div class="color-sample" style="background-color: var(--crema-guayaba);"></div>
+                <div class="color-info">
+                    <p class="color-name">Crema Guayaba</p>
+                    <span class="color-hex">#F1F2D8</span>
+                    <div class="color-meta">
+                        <strong>Uso en UI:</strong> Fondos de bloques informativos, testimonios o zonas de lectura limpia.
+                    </div>
+                    <div class="color-meta">
+                        <strong>Origen:</strong> Capa de transición interna entre cáscara y pulpa.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color 8 -->
+            <div class="color-card">
+                <div class="color-sample" style="background-color: var(--blanco-hueso);"></div>
+                <div class="color-info">
+                    <p class="color-name">Blanco Hueso</p>
+                    <span class="color-hex">#FAFAFA</span>
+                    <div class="color-meta">
+                        <strong>Uso en UI:</strong> Fondo maestro del sitio web para garantizar el descanso visual.
+                    </div>
+                    <div class="color-meta">
+                        <strong>Origen:</strong> Contraste neutro industrial-orgánico limpio.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color 9 -->
+            <div class="color-card">
+                <div class="color-sample" style="background-color: var(--tierra-tapia);"></div>
+                <div class="color-info">
+                    <p class="color-name">Tierra Tapia</p>
+                    <span class="color-hex">#C17754</span>
+                    <div class="color-meta">
+                        <strong>Uso en UI:</strong> Subtítulos, bordes, detalles artesanales o divisorias de sección.
+                    </div>
+                    <div class="color-meta">
+                        <strong>Origen:</strong> Tierra arcillosa y construcciones de tapia pisada típicas de Barichara.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color 10 -->
+            <div class="color-card">
+                <div class="color-sample" style="background-color: var(--carbon-vegetal);"></div>
+                <div class="color-info">
+                    <p class="color-name">Carbón Vegetal</p>
+                    <span class="color-hex">#2C3525</span>
+                    <div class="color-meta">
+                        <strong>Uso en UI:</strong> Color base de textos largos, títulos principales de alta jerarquía.
+                    </div>
+                    <div class="color-meta">
+                        <strong>Origen:</strong> El remate oscuro e inferior de la fruta de guayaba.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sección 2: Gradientes Sugeridos -->
+        <h2 class="section-title">Gradientes de Interfaz Diseñados</h2>
+        <div class="grid-gradients">
+            
+            <div class="gradient-card">
+                <div class="gradient-sample" style="background: linear-gradient(135deg, var(--coral-vibrante), var(--tierra-tapia));"></div>
+                <div class="gradient-info">
+                    <p class="gradient-name">Amanecer en Tapia</p>
+                    <p class="gradient-use">Ideal para banners promocionales principales, overlays de imágenes de producto o secciones Hero con alta carga emocional.</p>
+                </div>
+            </div>
+
+            <div class="gradient-card">
+                <div class="gradient-sample" style="background: linear-gradient(135deg, var(--verde-hoja), var(--verde-profundo));"></div>
+                <div class="gradient-info">
+                    <p class="gradient-name">Dosel Orgánico</p>
+                    <p class="gradient-use">Perfecto para el diseño del footer del sitio web, secciones corporativas de sostenibilidad o bloques institucionales.</p>
+                </div>
+            </div>
+
+            <div class="gradient-card">
+                <div class="gradient-sample" style="background: linear-gradient(135deg, var(--blanco-hueso), var(--crema-guayaba), var(--rosado-palido));"></div>
+                <div class="gradient-info">
+                    <p class="gradient-name">Brisa Suave</p>
+                    <p class="gradient-use">Excelente textura sutil de fondo para secciones extensas donde se listan características o detalles técnicos de la tienda.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sección 3: Guía de Combinaciones y Contraste -->
+        <h2 class="section-title">Guía de Combinaciones e Intercambio de Contrastes</h2>
+        <div class="combinations-list">
+            
+            <div class="combination-row">
+                <p class="combination-title">1. Lectura Extensa Convencional (Luz Absoluta)</p>
+                <p class="combination-desc">Fondo ultra limpio para bloques de texto largos, blogs o descripciones de producto. El tono oscuro no es negro puro, evitando la fatiga ocular.</p>
+                <div class="combination-preview" style="background-color: var(--blanco-hueso); color: var(--carbon-vegetal);">
+                    Texto Carbón Vegetal sobre Fondo Blanco Hueso
+                </div>
+            </div>
+
+            <div class="combination-row">
+                <p class="combination-title">2. Bloque Corporativo Premium (Contraste Invertido)</p>
+                <p class="combination-desc">Estructura ideal para pies de página o llamadas de atención importantes dentro de la navegación. Ofrece una estética mística y selecta.</p>
+                <div class="combination-preview" style="background-color: var(--verde-profundo); color: var(--blanco-hueso);">
+                    Texto Blanco Hueso sobre Fondo Verde Profundo
+                </div>
+            </div>
+
+            <div class="combination-row">
+                <p class="combination-title">3. Botón de Conversión de Alto Tráfico</p>
+                <p class="combination-desc">Diseñado exclusivamente para que los llamados a la acción resalten inmediatamente al romper con los tonos fríos y verdes del entorno.</p>
+                <div class="combination-preview" style="background-color: var(--coral-vibrante); color: var(--blanco-hueso);">
+                    Acción Principal (CTA) en Coral
+                </div>
+            </div>
+
+            <div class="combination-row">
+                <p class="combination-title">4. Tarjetas de Resalte Informativo u Ofertas</p>
+                <p class="combination-desc">Estilo suave y sofisticado para micro-secciones dentro de la tienda en línea, como cupones, banners informativos breves o avisos de envío.</p>
+                <div class="combination-preview" style="background-color: var(--rosado-palido); color: var(--rojo-semilla);">
+                    Texto Rojo Semilla sobre Fondo Rosado Pálido
+                </div>
+            </div>
+
+            <div class="combination-row">
+                <p class="combination-title">5. Resalte Ecológico Artesanal</p>
+                <p class="combination-desc">Ideal para dar contexto artesanal a elementos del menú, títulos secundarios o badges de procedencia local (Hecho en Barichara).</p>
+                <div class="combination-preview" style="background-color: var(--crema-guayaba); color: var(--tierra-tapia);">
+                    Texto Tierra Tapia sobre Fondo Crema Guayaba
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+name: build-and-push
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: bijadillo-webijadillo-production
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/bijadillo-github-actions-ecr-push
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push to ECR
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/arm64
+          push: true
+          tags: |
+            ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:latest
+            ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Deploy to Lambda
+        run: |
+          aws lambda update-function-code \
+            --function-name ${{ env.ECR_REPOSITORY }} \
+            --image-uri ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:latest \
+            --region ${{ env.AWS_REGION }}
+          aws lambda wait function-updated \
+            --function-name ${{ env.ECR_REPOSITORY }} \
+            --region ${{ env.AWS_REGION }}

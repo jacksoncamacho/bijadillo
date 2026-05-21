@@ -1,0 +1,15 @@
+.git
+.gitignore
+.github
+.DS_Store
+node_modules
+.next
+npm-debug.log
+*.log
+.env
+.env.*
+!.env.example
+docker
+*.md
+!package.json
+"Bijadillo Landing.html"
