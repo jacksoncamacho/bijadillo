@@ -134,6 +134,7 @@ export function Nav({ lang, setLang, active, theme, setTheme, currency, setCurre
 
   return (
     <header className={"nav" + (scrolled ? " scrolled" : "")}>
+      <div className={"nav-backdrop" + (mobile ? " open" : "")} onClick={() => setMobile(false)} aria-hidden="true" />
       <div className="wrap nav-inner">
         <a href="#top" className="brand" aria-label="Bijadillo" onClick={() => setMobile(false)}>
           <BrandMark />
