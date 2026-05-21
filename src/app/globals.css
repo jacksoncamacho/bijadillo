@@ -288,6 +288,8 @@ body[data-grain="off"] .app-shell::before { display: none; }
 .theme-toggle svg { width: 18px; height: 18px; }
 
 .hamburger { display: none; }
+.nav-backdrop { display: none; }
+
 @media (max-width: 1080px) {
   .hamburger {
     display: inline-grid; place-items: center;
@@ -295,16 +297,20 @@ body[data-grain="off"] .app-shell::before { display: none; }
     border-radius: 999px;
     background: var(--border-soft);
     color: var(--text-display);
+    flex-shrink: 0;
   }
+  /* Full-screen slide — sits under the fixed nav bar (z-index 100) */
   .nav-links {
     display: flex;
-    position: fixed; inset: 60px 0 0 0;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    padding-top: 64px;
     background: var(--bg);
     flex-direction: column;
     gap: 0;
-    padding: 24px;
-    transform: translateY(-110%);
-    transition: transform .35s cubic-bezier(.2,.7,.2,1), visibility 0s linear .35s;
+    padding-left: 24px; padding-right: 24px; padding-bottom: 24px;
+    transform: translateY(-100%);
+    transition: transform .38s cubic-bezier(.2,.7,.2,1), visibility 0s linear .38s;
     z-index: 99;
     align-items: flex-start;
     overflow-y: auto;
@@ -315,23 +321,26 @@ body[data-grain="off"] .app-shell::before { display: none; }
     transform: translateY(0);
     visibility: visible;
     pointer-events: auto;
-    transition: transform .35s cubic-bezier(.2,.7,.2,1), visibility 0s;
+    transition: transform .38s cubic-bezier(.2,.7,.2,1), visibility 0s;
   }
   .nav-links a {
     font-family: var(--serif); font-size: 30px; font-style: italic;
-    color: var(--text-display); padding: 14px 0;
+    color: var(--text-display); padding: 16px 0;
     width: 100%;
     border-bottom: 1px solid var(--border);
   }
+  .nav-links a:first-child { padding-top: 8px; }
   .nav-links a.active::after { display: none; }
   .nav-cta .reserve-btn { display: none; }
+  /* Dim backdrop behind menu */
   .nav-backdrop {
     display: block;
-    position: fixed; inset: 60px 0 0 0;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
     z-index: 98;
-    background: rgba(0,0,0,.3);
+    background: rgba(0,0,0,.45);
     opacity: 0; pointer-events: none;
-    transition: opacity .35s;
+    transition: opacity .38s;
   }
   .nav-backdrop.open { opacity: 1; pointer-events: auto; }
 }

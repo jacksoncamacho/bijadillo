@@ -11,7 +11,7 @@ export const COPY = {
     },
     hero: {
       eyebrow: "Velez · Barichara · Santander",
-      title1: "Una hoja. Sergio.",
+      title1: "Una hoja.",
       title2: "Un dulce.",
       title3: "Un país.",
       lede: "Casa familiar colombiana. Curamos el bocadillo veleño y otros tesoros del campo en formato editorial, los vestimos con fibras nobles y los ofrecemos al viajero que vino a probar Colombia entera.",
