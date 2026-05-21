@@ -1,0 +1,5 @@
+name = "bijadillo"
+compatibility_date = "2025-05-21"
+
+[assets]
+directory = "out"
